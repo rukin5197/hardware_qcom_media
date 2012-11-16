@@ -1468,6 +1468,8 @@ OMX_ERRORTYPE omx_vdec::component_init(OMX_STRING role)
         (codec_type_parse == CODEC_TYPE_H264)) //add CP check here
     {
       //Check if dmx can be disabled
+      drv_ctx.disable_dmx = false;
+#if 0
       struct vdec_ioctl_msg ioctl_msg = {NULL, NULL};
       OMX_ERRORTYPE eRet = OMX_ErrorNone;
       ioctl_msg.out = &drv_ctx.disable_dmx;
@@ -1494,6 +1496,7 @@ OMX_ERRORTYPE omx_vdec::component_init(OMX_STRING role)
           drv_ctx.disable_dmx = false;
         }
       }
+#endif
     }
     if (drv_ctx.decoder_format == VDEC_CODECTYPE_H264)
     {
